@@ -106,7 +106,7 @@ CREATE TABLE `inventarios` (
   KEY `fk_inv_producto` (`id_producto`),
   CONSTRAINT `fk_inv_producto` FOREIGN KEY (`id_producto`) REFERENCES `productos` (`id_producto`),
   CONSTRAINT `fk_inv_tienda` FOREIGN KEY (`id_tienda`) REFERENCES `tiendas` (`id_tienda`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +115,7 @@ CREATE TABLE `inventarios` (
 
 LOCK TABLES `inventarios` WRITE;
 /*!40000 ALTER TABLE `inventarios` DISABLE KEYS */;
-INSERT INTO `inventarios` VALUES (36,1,4,11.000);
+INSERT INTO `inventarios` VALUES (36,1,4,1.000),(40,1,1,23.000),(41,1,5,1.000);
 /*!40000 ALTER TABLE `inventarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,7 +144,7 @@ CREATE TABLE `lineas` (
 
 LOCK TABLES `lineas` WRITE;
 /*!40000 ALTER TABLE `lineas` DISABLE KEYS */;
-INSERT INTO `lineas` VALUES (6,'1.1','desc',1),(7,'1.2','asdfad',1);
+INSERT INTO `lineas` VALUES (6,'1.1','desc',1),(7,'1.2','CHILES',1);
 /*!40000 ALTER TABLE `lineas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -256,7 +256,7 @@ CREATE TABLE `precios` (
 
 LOCK TABLES `precios` WRITE;
 /*!40000 ALTER TABLE `precios` DISABLE KEYS */;
-INSERT INTO `precios` VALUES (4,1,258.000),(4,2,220.000),(4,4,195.000),(4,5,395.000),(5,1,220.000),(5,2,200.000);
+INSERT INTO `precios` VALUES (1,1,220.000),(1,2,200.000),(4,1,258.000),(4,2,220.000),(4,3,220.000),(4,4,195.000),(4,5,395.000),(5,1,220.000),(5,2,200.000),(5,12,456.500);
 /*!40000 ALTER TABLE `precios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -288,7 +288,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (4,'0004','MULATO','000014','KG',1,7);
+INSERT INTO `productos` VALUES (1,'0001','GUAJILLO',NULL,'KG',1,7),(4,'0004','MULATO','000014','KG',1,7),(5,'0005','PASILLA',NULL,'KG',1,7);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -405,14 +405,14 @@ CREATE TABLE `usuarios` (
   `alias` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `clave` varchar(30) NOT NULL,
-  `editar_precio` int DEFAULT '0',
+  `id_tienda` int DEFAULT NULL,
   `id_rol` int NOT NULL,
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `alias` (`alias`),
   UNIQUE KEY `nombre` (`nombre`),
   KEY `fk_rol` (`id_rol`),
   CONSTRAINT `fk_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +421,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'pedro','Pedro Gomez','1234',0,2),(2,'ramiro','Ramiro Ruiz','9865',0,1),(3,'jorge','Jorge Ramos','9865',0,1),(5,'Franky','Frank','12345',NULL,1);
+INSERT INTO `usuarios` VALUES (2,'Piter','Pedro Gomez','12345',1,2),(3,'Tony','Antonio Marquez','12345',1,2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,4 +438,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-09-27 19:40:11
+-- Dump completed on 2025-09-28 19:59:07
